@@ -2,7 +2,9 @@
 
 ### A subtitle, if you want one
 
-Nick Cernak
+Nicholas Cernak
+
+<small>Creative Engineer and Founder of Northstar Digital Design</small>
 
 Note:
 This is a speaker note. Press **S** during the talk to open the
