@@ -1,13 +1,65 @@
----
-layout: presentation
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% for post in site.posts reversed %}
-	{% include slide.html %}
-	<div class="page-break"></div>
-{% endfor %}
-{% unless site.simple-slideshow %}
-{% if site.overview %}
-<section id="overview" class="step" {% for attr in site.overview-data %} data-{{attr[0]}}="{{attr[1]}}"{% endfor %}></section>
-{% endif %}
-{% endunless %}
+    <!-- Shown in the browser tab and when the deck is shared. -->
+    <title>Nick Cernak &mdash; Talks</title>
+    <meta name="description" content="A presentation by Nick Cernak.">
+    <meta name="author" content="Nick Cernak">
+
+    <link rel="stylesheet" href="reveal/dist/reset.css">
+    <link rel="stylesheet" href="reveal/dist/reveal.css">
+
+    <!--
+      Theme. Swap the filename to restyle the whole deck.
+      Dark rooms: black, league, moon, night, blood, dracula, solarized
+      Bright rooms / projectors: white, beige, serif, simple, sky
+      Maximum legibility: black-contrast, white-contrast
+    -->
+    <link rel="stylesheet" href="reveal/dist/theme/black.css" id="theme">
+
+    <!-- Syntax highlighting theme for code blocks. Also: zenburn.css -->
+    <link rel="stylesheet" href="reveal/dist/plugin/highlight/monokai.css">
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!--
+          Slides are authored in slides/talk.md, not here.
+          "---" starts a new slide, "--" nests one below the current slide,
+          and "Note:" begins speaker notes (press S to open the notes window).
+        -->
+        <section
+          data-markdown="slides/talk.md"
+          data-separator="^\r?\n---\r?\n$"
+          data-separator-vertical="^\r?\n--\r?\n$"
+          data-separator-notes="^Note:"
+          data-charset="utf-8"></section>
+      </div>
+    </div>
+
+    <script src="reveal/dist/reveal.js"></script>
+    <script src="reveal/dist/plugin/markdown.js"></script>
+    <script src="reveal/dist/plugin/highlight.js"></script>
+    <script src="reveal/dist/plugin/notes.js"></script>
+    <script src="reveal/dist/plugin/search.js"></script>
+    <script src="reveal/dist/plugin/zoom.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,          // deep-link to the current slide, so you can reload mid-talk
+        slideNumber: 'c/t',  // "3/12" in the corner
+        transition: 'slide',
+
+        // Below 435px reveal.js normally switches to a continuous "scroll view".
+        // In 6.0.2 that path throws a TypeError, and a phone-sized audience
+        // member is better served by the ordinary swipeable deck anyway.
+        scrollActivationWidth: null,
+
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch, RevealZoom]
+      });
+    </script>
+  </body>
+</html>

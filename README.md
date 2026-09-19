@@ -1,13 +1,74 @@
-# Your GitHub Learning Lab Repository for Introducing GitHub
+# Slideshow
 
-Welcome to **your** repository for your GitHub Learning Lab course. This repository will be used during the different activities that I will be guiding you through. See a word you don't understand? We've included an emoji 📖 next to some key terms. Click on it to see its definition.
+A [reveal.js](https://revealjs.com) presentation deck. Slides are written in
+Markdown; the deck is plain static HTML with no build step.
 
-Oh! I haven't introduced myself...
+**Live:** https://cernak.github.io/github-slideshow/
 
-I'm the GitHub Learning Lab bot and I'm here to help guide you in your journey to learn and master the various topics covered in this course. I will be using Issue and Pull Request comments to communicate with you. In fact, I already added an issue for you to check out.
+## Writing a talk
 
-![issue tab](https://lab.github.com/public/images/issue_tab.png)
+Edit [`slides/talk.md`](slides/talk.md). Three separators do the work:
 
-I'll meet you over there, can't wait to get started!
+| Syntax  | Meaning                                    |
+| ------- | ------------------------------------------ |
+| `---`   | Start a new slide                          |
+| `--`    | Nest a slide below the current one         |
+| `Note:` | Everything after this becomes speaker notes |
 
-This course is using the :sparkles: open source project [reveal.js](https://github.com/hakimel/reveal.js/). In some cases we’ve made changes to the history so it would behave during class, so head to the original project repo to learn more about the cool people behind this project.
+Images go in `images/` and are referenced as `![Alt text](images/name.png)`.
+
+To change the look, swap the theme stylesheet in [`index.html`](index.html).
+Dark rooms suit `black`, `league`, or `moon`; bright rooms and washed-out
+projectors suit `white` or `beige`. There are `black-contrast` and
+`white-contrast` variants when legibility matters most.
+
+## Previewing locally
+
+```sh
+npm start
+```
+
+Then open <http://localhost:8000>. Any Python 3 install will do — there's no
+Ruby, no bundler, and no Node runtime needed just to preview.
+
+A local server is required because the browser fetches `slides/talk.md` over
+HTTP; opening `index.html` directly from the filesystem will show an empty
+deck.
+
+## Presenting
+
+| Key                | Does                               |
+| ------------------ | ---------------------------------- |
+| `S`                | Speaker view — notes, timer, next slide |
+| `F`                | Full screen                        |
+| `O`                | Overview of every slide            |
+| `B`                | Black out the screen               |
+| `Ctrl`/`Cmd` + click | Zoom into a region               |
+
+For a PDF handout, open the deck with `?print-pdf` appended to the URL and
+print to PDF from the browser.
+
+## Updating reveal.js
+
+The `reveal/` directory is a committed copy of the library, so that GitHub
+Pages can serve it without a build step. To pull in a new version:
+
+```sh
+npm install reveal.js@latest
+npm run vendor
+```
+
+Commit the resulting changes to `reveal/`, `package.json`, and
+`package-lock.json`. Dependabot watches `package.json` and will open a pull
+request when a new release or security fix appears — run `npm run vendor`
+on that branch before merging, so the served copy matches the lockfile.
+
+## Deployment
+
+GitHub Pages serves this repository directly from the default branch. The
+`.nojekyll` file tells Pages to publish the files as-is rather than running
+them through Jekyll. Pushing to `main` is the whole deploy process.
+
+## License
+
+[MIT](LICENSE)
