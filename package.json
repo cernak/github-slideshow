@@ -1,5 +1,5 @@
 {
-  "name": "github-slideshow",
+  "name": "talks",
   "version": "1.0.0",
   "private": true,
   "description": "Presentation deck built on reveal.js",
