@@ -3,7 +3,7 @@
 A [reveal.js](https://revealjs.com) presentation deck. Slides are written in
 Markdown; the deck is plain static HTML with no build step.
 
-**Live:** https://cernak.github.io/github-slideshow/
+**Live:** https://cernak.github.io/talks/
 
 ## Writing a talk
 
